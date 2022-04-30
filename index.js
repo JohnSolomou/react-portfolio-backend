@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-
+const port = process.env.PORT || 4000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
@@ -23,22 +23,23 @@ app.post("/send_mail", cors(), async (req, res) => {
   });
 
   await transport.sendMail({
-    from: process.env.MAIL_FROM,
+    from: `${email}`,
+    // process.env.MAIL_FROM,
     to: "solomoufam@yahoo.com",
-    subject: "test email",
+    subject: "email from your portfolio",
     html: `<div className="email">
     <h2>Here is your email! From:${name}</h2>
-  
+
     <p>${email}</p>
     <p>${subject}</P>
     <p>${message}</p>
 
-    <p>All the best, John</p>
+    <p>All the best,${name}</p>
      </div>
 `,
   });
 });
 
-app.listen(process.env.Port || 4000, () => {
-  console.log("server is listening on port 4000");
+app.listen(port, () => {
+  console.log(`server is listening on port ${port}`);
 });
