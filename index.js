@@ -28,11 +28,11 @@ app.post("/send_mail", cors(), async (req, res) => {
     to: "solomoufam@yahoo.com",
     subject: "email from your portfolio",
     html: `<div className="email">
-    <h2>Here is your email! From:${name}</h2>
+    <h2>Portfolio email! From:${name}</h2>
 
-    <p>${email}</p>
-    <p>${subject}</P>
-    <p>${message}</p>
+    <p>Email:${email}</p>
+    <p>subject:${subject}</P>
+    <p>Message:${message}</p>
 
     <p>All the best,${name}</p>
      </div>
